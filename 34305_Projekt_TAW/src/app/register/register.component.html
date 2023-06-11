@@ -1,0 +1,23 @@
+<!-- register.component.html -->
+<div class="form-container">
+  <div>
+    <h2>Registration Form</h2>
+    <form (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" [(ngModel)]="userData.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" [(ngModel)]="userData.name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" [(ngModel)]="userData.password" name="password" required>
+      </div>
+      <button class="submit-btn" type="submit" [disabled]="registrationSuccessful">Register</button>
+      <button class="submit-btn" type="button" *ngIf="registrationSuccessful" (click)="redirectToLogin()">Registration successful, log in</button>
+    </form>
+  </div>
+  </div>
+  

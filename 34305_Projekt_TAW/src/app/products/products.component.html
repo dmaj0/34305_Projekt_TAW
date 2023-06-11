@@ -1,0 +1,86 @@
+<div class="products-container">
+  <div *ngFor="let product of products" class="product-card">
+    <h3>{{ product.title }}</h3>
+    <img src="{{ product.image }}" alt="{{ product.title }}">
+    <p>{{ product.author}}</p>
+    <button (click)="onDetails(product.id)" class="details-btn">Show Details</button>
+    <button (click)="onDelete(product.id)" class="delete-btn"></button>
+    <button (click)="onEdit(product.id)" class="edit-btn"></button>
+  </div>
+  <div class="product-card" (click)="onAddNew()" *ngIf="!isAddOpen">
+    <p>Add new product...</p>
+  </div>
+</div>
+
+<div *ngIf="isAddOpen" class="overlay">
+    <div class="edit-card">
+      <div class="edit-header">
+        <h2>Add New Product</h2>
+        <button (click)="closeAdd()" class="button close-btn">&times;</button>
+      </div>
+      <div class="edit-content">
+        <form [formGroup]="addForm" (ngSubmit)="onSubmitAddForm()">
+          <label>
+            Title:
+            <input type="text" formControlName="title">
+          </label>
+          <label>
+            Image:
+            <input type="text" formControlName="image">
+          </label>
+          <label>
+            Description:
+            <textarea formControlName="description"></textarea>
+          </label>
+          <label>
+            Author:
+            <input type="text" formControlName="author">
+          </label>
+          <button type="submit" class="button submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<div *ngIf="isDetailsOpen" class="overlay">
+  <div class="details-card">
+    <div class="details-header">
+      <h2>{{selectedProduct?.author}}: "{{ selectedProduct?.title }}"</h2>
+      <button (click)="closeDetails()" class="button close-btn">&times;</button>
+    </div>
+    <div class="details-content">
+      <img [src]="selectedProduct?.image" alt="Product Image">
+      <p>{{ selectedProduct?.description }}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isEditOpen" class="overlay">
+  <div class="edit-card">
+    <div class="edit-header">
+      <h2>Edit "{{editedProduct?.title}}" by {{editedProduct?.author}}</h2>
+      <button (click)="closeEdit()" class="button close-btn">&times;</button>
+    </div>
+    <div class="edit-content">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmitEditForm()">
+        <label>
+          Title:
+          <input type="text" formControlName="title" [value]="editedProduct?.title">
+        </label>
+        <label>
+          Image:
+          <input type="text" formControlName="image" [value]="editedProduct?.image">
+        </label>
+        <label>
+          Description:
+          <textarea formControlName="description">{{editedProduct?.description}}</textarea>
+        </label>
+        <label>
+          Author:
+          <input type="text" formControlName="author" [value]="editedProduct?.author">
+        </label>
+        <button type="submit" class="button submit-btn">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

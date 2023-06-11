@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+}
+h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Dodane */
+  padding: 2rem;
+  font-family: 'Playfair Display', serif;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Dodane */
+  gap: 1rem;
+  background-color: #FFF;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+form input {
+  width: 100%; /* Dodane */
+  padding: 1rem;
+  font-family: 'Playfair Display', serif;
+  border: none;
+  border-radius: .5rem;
+}
+form input:hover{
+  border-radius: .5rem;
+  border-color: #FFD72F;
+  border-style: solid;
+}
+
+form button {
+  width: 100%; /* Dodane */
+  padding: 1rem;
+  font-family: 'Playfair Display', serif;
+  border: none;
+  border-radius: .5rem;
+  background-color: #000;
+  color: #FFF;
+}
+
+form button:hover {
+  background-color: #FFD72F;
+  color: #000;
+}
